@@ -37,7 +37,7 @@ function enviarPedido() {
 
     const confirmacion = confirm("¿Estás seguro de que deseas enviar este pedido?");
     if (confirmacion) {
-        const telefono = "123456789"; // Reemplaza con el número de WhatsApp
+        const telefono = "4411156678"; // Reemplaza con el número de WhatsApp
         const mensaje = encodeURIComponent(
             `Hola, me gustaría ordenar:\n` +
             pedido.map(p => `${p.item} - $${p.precio}`).join('\n') +
