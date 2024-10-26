@@ -3,75 +3,123 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Menú de Gorditas de Guisos</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <title>Menú Virtual de Gorditas</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Menú de Gorditas de Guisos</h1>
-        <div class="menu">
-            <div class="item">
-                <img src="guiso1.jpg" alt="Gordita de Guiso 1">
-                <h3>Gordita de Guiso 1</h3>
-                <p>Descripción del guiso 1</p>
-                <p>$50</p>
-                <button onclick="agregarPedido('Gordita de Guiso 1', 50)">Agregar</button>
+
+<header class="text-center bg-primary text-white py-4">
+    <h1>Menú Virtual de Gorditas</h1>
+</header>
+
+<div class="container my-4">
+    <h2 class="text-center">Selecciona tus Gorditas</h2>
+    
+    <!-- Formulario para ingresar nombre y tipo de entrega -->
+    <form id="pedido-form">
+        <div class="form-group">
+            <label for="nombre">Nombre:</label>
+            <input type="text" class="form-control" id="nombre" placeholder="Ingresa tu nombre" required>
+        </div>
+        <div class="form-group">
+            <label>Tipo de Entrega:</label>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="entrega" id="entrega-casa" value="Casa" checked>
+                <label class="form-check-label" for="entrega-casa">Entrega a Domicilio</label>
             </div>
-            <div class="item">
-                <img src="guiso2.jpg" alt="Gordita de Guiso 2">
-                <h3>Gordita de Guiso 2</h3>
-                <p>Descripción del guiso 2</p>
-                <p>$60</p>
-                <button onclick="agregarPedido('Gordita de Guiso 2', 60)">Agregar</button>
-            </div>
-            <div class="item">
-                <img src="guiso3.jpg" alt="Gordita de Guiso 3">
-                <h3>Gordita de Guiso 3</h3>
-                <p>Descripción del guiso 3</p>
-                <p>$70</p>
-                <button onclick="agregarPedido('Gordita de Guiso 3', 70)">Agregar</button>
-            </div>
-            <div class="item">
-                <img src="guiso4.jpg" alt="Gordita de Guiso 4">
-                <h3>Gordita de Guiso 4</h3>
-                <p>Descripción del guiso 4</p>
-                <p>$80</p>
-                <button onclick="agregarPedido('Gordita de Guiso 4', 80)">Agregar</button>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="entrega" id="entrega-recoger" value="Recoger">
+                <label class="form-check-label" for="entrega-recoger">Pasar a Recoger</label>
             </div>
         </div>
+    </form>
 
-        <h2>Tu Pedido</h2>
-        <ul id="pedido-lista"></ul>
-        <p>Total: $<span id="pedido-total">0</span></p>
-        <button onclick="enviarPedido()" class="btn-enviar">Enviar Pedido</button>
-
-        <div id="bebida-menu" style="display: none;">
-            <h2>Selecciona una Bebida</h2>
-            <div class="menu">
-                <div class="item">
-                    <h3>Bebida 1</h3>
-                    <p>$20</p>
-                    <button onclick="agregarBebida('Bebida 1', 20)">Agregar</button>
+    <div class="row text-center">
+        <div class="col-md-3">
+            <div class="card mb-4">
+                <img src="guiso1.jpg" class="card-img-top" alt="Gordita de Guiso 1">
+                <div class="card-body">
+                    <h5 class="card-title">Gordita de Guiso 1</h5>
+                    <p class="card-text">Descripción del guiso 1.</p>
+                    <button class="btn btn-success" onclick="agregarPedido('Gordita de Guiso 1', 20)">Agregar</button>
                 </div>
-                <div class="item">
-                    <h3>Bebida 2</h3>
-                    <p>$25</p>
-                    <button onclick="agregarBebida('Bebida 2', 25)">Agregar</button>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card mb-4">
+                <img src="guiso2.jpg" class="card-img-top" alt="Gordita de Guiso 2">
+                <div class="card-body">
+                    <h5 class="card-title">Gordita de Guiso 2</h5>
+                    <p class="card-text">Descripción del guiso 2.</p>
+                    <button class="btn btn-success" onclick="agregarPedido('Gordita de Guiso 2', 25)">Agregar</button>
                 </div>
-                <div class="item">
-                    <h3>Bebida 3</h3>
-                    <p>$15</p>
-                    <button onclick="agregarBebida('Bebida 3', 15)">Agregar</button>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card mb-4">
+                <img src="guiso3.jpg" class="card-img-top" alt="Gordita de Guiso 3">
+                <div class="card-body">
+                    <h5 class="card-title">Gordita de Guiso 3</h5>
+                    <p class="card-text">Descripción del guiso 3.</p>
+                    <button class="btn btn-success" onclick="agregarPedido('Gordita de Guiso 3', 30)">Agregar</button>
                 </div>
-                <div class="item">
-                    <h3>Bebida 4</h3>
-                    <p>$30</p>
-                    <button onclick="agregarBebida('Bebida 4', 30)">Agregar</button>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card mb-4">
+                <img src="guiso4.jpg" class="card-img-top" alt="Gordita de Guiso 4">
+                <div class="card-body">
+                    <h5 class="card-title">Gordita de Guiso 4</h5>
+                    <p class="card-text">Descripción del guiso 4.</p>
+                    <button class="btn btn-success" onclick="agregarPedido('Gordita de Guiso 4', 35)">Agregar</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <div id="pedido" class="mt-5">
+        <h2>Tu Pedido</h2>
+        <ul id="pedido-lista" class="list-group mb-3"></ul>
+        <p>Total: $<span id="pedido-total">0</span></p>
+        <button class="btn btn-primary" onclick="enviarPedido()">Enviar Pedido</button>
+        <button class="btn btn-warning" onclick="mostrarBebidaMenu()">Agregar Bebidas</button>
+
+        <div id="menu-bebidas" class="d-none">
+            <h3>Bebidas</h3>
+            <ul class="list-group mb-3">
+                <li class="list-group-item">
+                    Agua - $10
+                    <button class="btn btn-success btn-sm float-right" onclick="agregarBebida('Agua', 10)">Agregar</button>
+                </li>
+                <li class="list-group-item">
+                    Refresco - $15
+                    <button class="btn btn-success btn-sm float-right" onclick="agregarBebida('Refresco', 15)">Agregar</button>
+                </li>
+                <li class="list-group-item">
+                    Jugo - $20
+                    <button class="btn btn-success btn-sm float-right" onclick="agregarBebida('Jugo', 20)">Agregar</button>
+                </li>
+                <li class="list-group-item">
+                    Cerveza - $30
+                    <button class="btn btn-success btn-sm float-right" onclick="agregarBebida('Cerveza', 30)">Agregar</button>
+                </li>
+            </ul>
+            <button class="btn btn-danger" onclick="ocultarBebidaMenu()">Cancelar Bebidas</button>
+        </div>
+    </div>
+</div>
+
+<footer class="text-center mt-4">
+    <p>© 2024 Menú Virtual de Gorditas. Todos los derechos reservados.</p>
+</footer>
+
+<script src="script.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

@@ -1,120 +1,41 @@
-* {
-    box-sizing: border-box;
-}
-
 body {
-    font-family: 'Arial', sans-serif;
     background-color: #f8f9fa;
-    margin: 0;
-    padding: 0;
 }
 
-.container {
-    max-width: 800px;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+header {
+    border-bottom: 4px solid #0056b3; /* Azul oscuro para el borde */
 }
 
-h1, h2 {
-    text-align: center;
-    color: #343a40;
-    margin-bottom: 20px;
+.card {
+    transition: transform 0.2s;
 }
 
-.menu {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-    gap: 20px;
-}
-
-.item {
-    background-color: #fdfdfd;
-    border: 1px solid #ced4da;
-    border-radius: 5px;
-    padding: 15px;
-    text-align: center;
-    transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.item:hover {
+.card:hover {
     transform: scale(1.05);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
 }
 
-.item img {
-    max-width: 100%;
-    border-radius: 5px;
-    margin-bottom: 10px;
+#pedido {
+    border: 1px solid #dee2e6;
+    border-radius: 0.5rem;
+    background-color: #ffffff;
+    padding: 15px;
 }
 
-.item h3 {
-    margin: 10px 0;
-    font-size: 1.2em;
+.list-group-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.item p {
-    margin: 5px 0;
-    color: #495057;
+footer {
+    margin-top: 30px;
+    font-size: 0.9em;
+    color: #6c757d;
 }
 
-button {
-    background-color: #28a745;
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.2s;
-}
-
-button:hover {
-    background-color: #218838;
-}
-
-.btn-enviar {
-    background-color: #007bff;
-    margin-top: 20px;
-    display: block;
-    width: 100%;
-}
-
-.btn-enviar:hover {
-    background-color: #0069d9;
-}
-
-#pedido-lista {
-    list-style-type: none;
-    padding: 0;
-    margin: 20px 0;
-}
-
-.btn-eliminar {
-    background-color: #dc3545;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.btn-eliminar:hover {
-    background-color: #c82333;
-}
-
-/* Responsividad */
-@media (max-width: 600px) {
-    .container {
-        padding: 10px;
-    }
-
-    .item {
-        padding: 10px;
-    }
-
-    .item h3 {
-        font-size: 1.1em;
+/* Responsive styles */
+@media (max-width: 768px) {
+    .card {
+        margin: 10px 0; /* Espacio entre las tarjetas */
     }
 }
