@@ -3,45 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Menú de Gorditas</title>
+    <title>Menú de Gorditas de Guisos</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="menu-container">
-        <h1>Menú de Gorditas</h1>
-
-        <div class="menu-item">
-            <img src="chicharron.jpg" alt="Gordita de Chicharrón">
-            <h2>QUESO</h2>
-            <p>$20.00</p>
-            <button onclick="agregarPedido('Gordita de Chicharrón', 20)">Añadir al Pedido</button>
+    <div class="container">
+        <h1>Menú de Gorditas de Guisos</h1>
+        <div class="menu">
+            <div class="item">
+                <img src="guiso1.jpg" alt="Gordita de Guiso 1">
+                <h3>Gordita de Guiso 1</h3>
+                <p>Descripción del guiso 1</p>
+                <p>$50</p>
+                <button onclick="agregarPedido('Gordita de Guiso 1', 50)">Agregar</button>
+            </div>
+            <div class="item">
+                <img src="guiso2.jpg" alt="Gordita de Guiso 2">
+                <h3>Gordita de Guiso 2</h3>
+                <p>Descripción del guiso 2</p>
+                <p>$60</p>
+                <button onclick="agregarPedido('Gordita de Guiso 2', 60)">Agregar</button>
+            </div>
+            <div class="item">
+                <img src="guiso3.jpg" alt="Gordita de Guiso 3">
+                <h3>Gordita de Guiso 3</h3>
+                <p>Descripción del guiso 3</p>
+                <p>$70</p>
+                <button onclick="agregarPedido('Gordita de Guiso 3', 70)">Agregar</button>
+            </div>
+            <div class="item">
+                <img src="guiso4.jpg" alt="Gordita de Guiso 4">
+                <h3>Gordita de Guiso 4</h3>
+                <p>Descripción del guiso 4</p>
+                <p>$80</p>
+                <button onclick="agregarPedido('Gordita de Guiso 4', 80)">Agregar</button>
+            </div>
         </div>
 
-        <div class="menu-item">
-            <img src="frijoles.jpg" alt="Gordita de Frijoles">
-            <h2>MIGAJAS</h2>
-            <p>$20.00</p>
-            <button onclick="agregarPedido('Gordita de Frijoles', 20)">Añadir al Pedido</button>
-        </div>
-
-        <div class="menu-item">
-            <img src="papas_chorizo.jpg" alt="Gordita de Papas con Chorizo">
-            <h2>POLLO</h2>
-            <p>$20.00</p>
-            <button onclick="agregarPedido('Gordita de Papas con Chorizo', 20)">Añadir al Pedido</button>
-        </div>
-
-        <div class="menu-item">
-            <img src="huevo_chile.jpg" alt="Gordita de Huevo con Chile">
-            <h2>SALCHICHA</h2>
-            <p>$20.00</p>
-            <button onclick="agregarPedido('Gordita de Huevo con Chile', 20)">Añadir al Pedido</button>
-        </div>
-
-        <h3>Pedido Actual:</h3>
+        <h2>Tu Pedido</h2>
         <ul id="pedido-lista"></ul>
         <p>Total: $<span id="pedido-total">0</span></p>
-        <button onclick="enviarPedido()">Enviar Pedido por WhatsApp</button>
+        <button onclick="enviarPedido()" class="btn-enviar">Enviar Pedido</button>
+
+        <div id="bebida-menu" style="display: none;">
+            <h2>Selecciona una Bebida</h2>
+            <div class="menu">
+                <div class="item">
+                    <h3>Bebida 1</h3>
+                    <p>$20</p>
+                    <button onclick="agregarBebida('Bebida 1', 20)">Agregar</button>
+                </div>
+                <div class="item">
+                    <h3>Bebida 2</h3>
+                    <p>$25</p>
+                    <button onclick="agregarBebida('Bebida 2', 25)">Agregar</button>
+                </div>
+                <div class="item">
+                    <h3>Bebida 3</h3>
+                    <p>$15</p>
+                    <button onclick="agregarBebida('Bebida 3', 15)">Agregar</button>
+                </div>
+                <div class="item">
+                    <h3>Bebida 4</h3>
+                    <p>$30</p>
+                    <button onclick="agregarBebida('Bebida 4', 30)">Agregar</button>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script src="script.js"></script>

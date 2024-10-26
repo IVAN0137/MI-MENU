@@ -8,6 +8,14 @@ function agregarPedido(item, precio) {
     actualizarPedido();
 }
 
+function agregarBebida(item, precio) {
+    const bebida = { item, precio };
+    pedido.push(bebida);
+    total += precio;
+    actualizarPedido();
+    document.getElementById('bebida-menu').style.display = 'none'; // Ocultar el menú de bebidas
+}
+
 function actualizarPedido() {
     const pedidoLista = document.getElementById('pedido-lista');
     const pedidoTotal = document.getElementById('pedido-total');
@@ -35,16 +43,21 @@ function enviarPedido() {
         return;
     }
 
-    const confirmacion = confirm("¿Estás seguro de que deseas enviar este pedido?");
-    if (confirmacion) {
-        const telefono = "524411156678"; // Reemplaza con el número de WhatsApp
-        const mensaje = encodeURIComponent(
-            `Hola, me gustaría ordenar:\n` +
-            pedido.map(p => `${p.item} - $${p.precio}`).join('\n') +
-            `\nTotal: $${total}`
-        );
-        
-        const url = `https://wa.me/${telefono}?text=${mensaje}`;
-        window.open(url, '_blank');
+    const agregarBebida = confirm("¿Te gustaría agregar alguna bebida?");
+    if (agregarBebida) {
+        document.getElementById('bebida-menu').style.display = 'block'; // Mostrar menú de bebidas
+    } else {
+        const confirmacion = confirm("¿Estás seguro de que deseas enviar este pedido?");
+        if (confirmacion) {
+            const telefono = "524411156678"; // Reemplaza con el número de WhatsApp
+            const mensaje = encodeURIComponent(
+                `Hola, me gustaría ordenar:\n` +
+                pedido.map(p => `${p.item} - $${p.precio}`).join('\n') +
+                `\n\nTotal: $${total}`
+            );
+
+            const url = `https://wa.me/${telefono}?text=${mensaje}`;
+            window.open(url, '_blank');
+        }
     }
 }
