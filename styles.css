@@ -1,41 +1,79 @@
+/* styles.css */
+
+/* Estilos generales */
 body {
+    font-family: 'Arial', sans-serif;
     background-color: #f8f9fa;
 }
 
+/* Estilos del header */
 header {
-    border-bottom: 4px solid #0056b3; /* Azul oscuro para el borde */
+    background-color: #007bff;
+    padding: 20px 0;
 }
 
-.card {
-    transition: transform 0.2s;
+header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+    color: white;
 }
 
-.card:hover {
-    transform: scale(1.05);
+/* Estilos del contenedor principal */
+.container {
+    margin-top: 20px;
 }
 
+/* Estilos para los títulos */
+h2 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+}
+
+/* Estilos para el pedido */
 #pedido {
-    border: 1px solid #dee2e6;
-    border-radius: 0.5rem;
-    background-color: #ffffff;
-    padding: 15px;
+    margin-top: 40px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff;
 }
 
-.list-group-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+/* Estilos de la lista de pedido */
+#pedido-lista {
+    max-height: 200px;
+    overflow-y: auto;
 }
 
+/* Estilos del footer */
 footer {
-    margin-top: 30px;
-    font-size: 0.9em;
-    color: #6c757d;
+    background-color: #007bff;
+    color: white;
+    padding: 10px 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
 }
 
-/* Responsive styles */
+/* Estilo para los botones de eliminar */
+.btn-eliminar {
+    margin-left: 10px;
+}
+
+/* Estilos responsivos */
 @media (max-width: 768px) {
-    .card {
-        margin: 10px 0; /* Espacio entre las tarjetas */
+    header h1 {
+        font-size: 2rem;
+    }
+
+    .card-title {
+        font-size: 1.2rem;
+    }
+
+    .card-text {
+        font-size: 0.9rem;
+    }
+
+    #pedido {
+        padding: 10px;
     }
 }

@@ -14,7 +14,7 @@ window.onload = function() {
 let pedido = {};
 let total = 0;
 
-// Función para agregar pedido
+// Función para agregar gorditas al pedido
 function agregarPedido(item, precio) {
     if (pedido[item]) {
         pedido[item].cantidad += 1;
@@ -25,7 +25,18 @@ function agregarPedido(item, precio) {
     actualizarPedido();
 }
 
-// Función para actualizar el pedido en el DOM
+// Función para agregar bebidas al pedido
+function agregarBebida(item, precio) {
+    if (pedido[item]) {
+        pedido[item].cantidad += 1;
+    } else {
+        pedido[item] = { cantidad: 1, precio };
+    }
+    total += precio;
+    actualizarPedido();
+}
+
+// Actualizar la lista de pedido y total
 function actualizarPedido() {
     const pedidoLista = document.getElementById('pedido-lista');
     const pedidoTotal = document.getElementById('pedido-total');
@@ -33,67 +44,52 @@ function actualizarPedido() {
     pedidoLista.innerHTML = '';
     for (const item in pedido) {
         const li = document.createElement('li');
-        li.innerHTML = `${pedido[item].cantidad} x ${item}
-            <button onclick="eliminarProducto('${item}')" class="btn btn-danger btn-sm ml-2">Eliminar</button>`;
+        li.className = 'list-group-item d-flex justify-content-between align-items-center';
+        li.innerHTML = `${pedido[item].cantidad} ${item} <button onclick="eliminarProducto('${item}')" class="btn btn-danger btn-sm ml-2">Eliminar</button>`;
         pedidoLista.appendChild(li);
     }
 
     pedidoTotal.textContent = total;
 }
 
-// Función para eliminar un producto del pedido
+// Función para eliminar un producto
 function eliminarProducto(item) {
     if (pedido[item]) {
-        if (pedido[item].cantidad > 1) {
-            pedido[item].cantidad -= 1;
-            total -= pedido[item].precio;
-        } else {
-            total -= pedido[item].precio;
+        total -= pedido[item].precio;
+        pedido[item].cantidad -= 1;
+
+        if (pedido[item].cantidad === 0) {
             delete pedido[item];
         }
         actualizarPedido();
     }
 }
 
-// Función para enviar el pedido
+// Enviar pedido a WhatsApp
 function enviarPedido() {
     if (Object.keys(pedido).length === 0) {
         alert("Tu pedido está vacío. Añade algún producto antes de enviar.");
         return;
     }
 
-    const nombre = document.getElementById('nombre').value;
-    const tipoEntrega = document.querySelector('input[name="entrega"]:checked').value;
+    const nombre = document.getElementById('nombre').value.trim();
+    if (!nombre) {
+        alert("Por favor, ingresa tu nombre.");
+        return;
+    }
 
     const confirmacion = confirm("¿Estás seguro de que deseas enviar este pedido?");
     if (confirmacion) {
         const telefono = "524411156678"; // Reemplaza con el número de WhatsApp
-        let mensaje = `Hola, me gustaría ordenar:\n`;
-
+        const entrega = document.querySelector('input[name="entrega"]:checked').value;
+        
+        let mensaje = `Hola, soy ${nombre}, me gustaría ordenar:\n`;
         for (const item in pedido) {
-            mensaje += `${pedido[item].cantidad} x ${item}\n`;
+            mensaje += `${pedido[item].cantidad} ${item}\n`;
         }
-        mensaje += `\nTotal: $${total}\n`;
-        mensaje += `Nombre: ${nombre}\n`;
-        mensaje += `Entrega: ${tipoEntrega}`;
+        mensaje += `\nTotal: $${total}\nEntrega: ${entrega}`;
 
         const url = `https://wa.me/${telefono}?text=${encodeURIComponent(mensaje)}`;
         window.open(url, '_blank');
     }
-}
-
-// Función para mostrar el menú de bebidas
-function mostrarBebidaMenu() {
-    document.getElementById('menu-bebidas').classList.remove('d-none');
-}
-
-// Función para ocultar el menú de bebidas
-function ocultarBebidaMenu() {
-    document.getElementById('menu-bebidas').classList.add('d-none');
-}
-
-// Función para agregar bebida al pedido
-function agregarBebida(item, precio) {
-    agregarPedido(item, precio);
-    ocultarBebidaMenu();
 }
